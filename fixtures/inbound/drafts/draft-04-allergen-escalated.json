@@ -1,0 +1,15 @@
+{
+  "id": "draft-04",
+  "agent": "Concierge AI",
+  "channel": "email",
+  "guest": "H. Berge",
+  "category": "question",
+  "confidence": 92,
+  "quoted_price": null,
+  "room_type_id": null,
+  "check_in": null,
+  "check_out": null,
+  "claims": ["the seafood tasting menu is completely peanut-free"],
+  "draft_text": "Good news - the kitchen has confirmed the seafood tasting menu is completely peanut-free, so it will be safe for your group.",
+  "received_at": "2026-08-27T08:15:00+00:00"
+}

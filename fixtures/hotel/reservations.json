@@ -1,0 +1,42 @@
+[
+  {
+    "id": "res-ext-01",
+    "external_ref": "RES-4401",
+    "status": "confirmed",
+    "check_in": "2026-08-14",
+    "check_out": "2026-08-16",
+    "room_type_id": "deluxe-sea-view",
+    "room_type_name": "Deluxe Sea View",
+    "adults": 2,
+    "children": 0,
+    "source": "direct",
+    "total": 920,
+    "balance": 0,
+    "currency": "EUR",
+    "guest": {
+      "id": "g-01", "first_name": "Tove", "last_name": "Solberg",
+      "email": "tove.solberg@example.com", "phone": "+1 555 0111",
+      "country": "SE", "language": ""
+    }
+  },
+  {
+    "id": "res-ext-02",
+    "external_ref": "RES-4402",
+    "status": "confirmed",
+    "check_in": "2026-09-05",
+    "check_out": "2026-09-07",
+    "room_type_id": "classic",
+    "room_type_name": "Classic Room",
+    "adults": 2,
+    "children": 0,
+    "source": "booking_com",
+    "total": 360,
+    "balance": 0,
+    "currency": "EUR",
+    "guest": {
+      "id": "g-02", "first_name": "Marcus", "last_name": "Ahonen",
+      "email": "marcus.ahonen@example.com", "phone": "+1 555 0122",
+      "country": "FI", "language": ""
+    }
+  }
+]

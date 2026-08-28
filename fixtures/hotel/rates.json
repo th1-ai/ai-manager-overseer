@@ -1,0 +1,16 @@
+[
+  {"date": "2026-08-14", "room_type_id": "deluxe-sea-view", "price": 460, "currency": "EUR",
+   "min_los": 1, "available": 3},
+  {"date": "2026-08-15", "room_type_id": "deluxe-sea-view", "price": 460, "currency": "EUR",
+   "min_los": 1, "available": 3},
+  {"date": "2026-09-05", "room_type_id": "classic", "price": 180, "currency": "EUR",
+   "min_los": 1, "available": 6},
+  {"date": "2026-09-06", "room_type_id": "classic", "price": 180, "currency": "EUR",
+   "min_los": 1, "available": 6},
+  {"date": "2026-09-12", "room_type_id": "garden-view", "price": 240, "currency": "EUR",
+   "min_los": 1, "available": 4},
+  {"date": "2026-09-20", "room_type_id": "marlow-suite", "price": 520, "currency": "EUR",
+   "min_los": 1, "available": 1},
+  {"date": "2026-10-01", "room_type_id": "deluxe-sea-view", "price": 410, "currency": "EUR",
+   "min_los": 1, "available": 2}
+]

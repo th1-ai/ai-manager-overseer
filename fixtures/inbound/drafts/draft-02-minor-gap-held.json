@@ -1,0 +1,15 @@
+{
+  "id": "draft-02",
+  "agent": "Front Desk AI",
+  "channel": "email",
+  "guest": "M. Ahonen",
+  "category": "question",
+  "confidence": 90,
+  "quoted_price": 165,
+  "room_type_id": "classic",
+  "check_in": "2026-09-05",
+  "check_out": "2026-09-07",
+  "claims": [],
+  "draft_text": "Hi Marcus, a Classic Room for those two nights works out to EUR 165 a night. Happy to hold it for you.",
+  "received_at": "2026-08-27T08:05:00+00:00"
+}

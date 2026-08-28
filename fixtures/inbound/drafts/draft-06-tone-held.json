@@ -1,0 +1,15 @@
+{
+  "id": "draft-06",
+  "agent": "Review-Response AI",
+  "channel": "email",
+  "guest": "M. Ahonen",
+  "category": "question",
+  "confidence": 91,
+  "quoted_price": null,
+  "room_type_id": null,
+  "check_in": null,
+  "check_out": null,
+  "claims": [],
+  "draft_text": "Not to worry, your refund is 100% refund guaranteed the moment we hear back from the bank, no questions asked.",
+  "received_at": "2026-08-27T08:25:00+00:00"
+}

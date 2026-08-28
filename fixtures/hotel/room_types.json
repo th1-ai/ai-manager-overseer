@@ -1,0 +1,6 @@
+[
+  {"id": "classic", "name": "Classic Room", "max_occupancy": 2, "count": 18, "rank": 1},
+  {"id": "garden-view", "name": "Garden View Room", "max_occupancy": 2, "count": 14, "rank": 2},
+  {"id": "deluxe-sea-view", "name": "Deluxe Sea View", "max_occupancy": 3, "count": 10, "rank": 3},
+  {"id": "marlow-suite", "name": "Marlow Suite", "max_occupancy": 4, "count": 4, "rank": 4}
+]

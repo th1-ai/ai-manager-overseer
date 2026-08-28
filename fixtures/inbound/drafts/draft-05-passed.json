@@ -1,0 +1,15 @@
+{
+  "id": "draft-05",
+  "agent": "Front Desk AI",
+  "channel": "email",
+  "guest": "T. Solberg",
+  "category": "question",
+  "confidence": 95,
+  "quoted_price": 460,
+  "room_type_id": "deluxe-sea-view",
+  "check_in": "2026-08-14",
+  "check_out": "2026-08-16",
+  "claims": [],
+  "draft_text": "Hello Tove, a Deluxe Sea View for that August weekend is EUR 460 a night, breakfast included. Let me know if you would like me to hold it.",
+  "received_at": "2026-08-27T08:20:00+00:00"
+}

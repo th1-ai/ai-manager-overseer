@@ -1,0 +1,11 @@
+{
+  "id": "email-06",
+  "thread_id": "thread-06",
+  "from": "j.reyes@example.com",
+  "from_name": "J. Reyes",
+  "to": ["reservations@example.com"],
+  "subject": "Delete my information - legal",
+  "body": "Hello,\n\nPlease erase my information immediately. My lawyer has advised me this is my right, and I have also spoken to a journalist about how this was handled.\n\nJ. Reyes",
+  "received_at": "2026-08-20T16:00:00+00:00",
+  "folder": "INBOX"
+}

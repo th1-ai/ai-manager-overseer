@@ -1,0 +1,129 @@
+# ---------------------------------------------------------------------------
+# agent.yaml - AI Manager / Overseer's own knobs. `make setup` copies this to
+# config/agent.yaml; edit that copy, this example stays as a clean reference.
+#
+# The Warden screens drafts other agents produce (Loop A, tools/run.py) and
+# the Notary works GDPR-shaped requests off a statutory checklist (Loop B,
+# tools/gdpr.py, off by default). Every notify / send still goes through
+# mode: shadow / review.require_approval_for in config/hotel.yaml - nothing
+# here loosens that. See docs/safety.md and docs/how-it-works.md.
+# ---------------------------------------------------------------------------
+
+# Which of pms/email/messaging this agent actually reads from - messaging is
+# send-only (the duty-manager alert and the SLA-breach alert), never read.
+# The Warden never writes to the PMS or sends a guest-facing message itself
+# either - see docs/integrations.md. Keeps `make run`'s SAMPLE DATA warning
+# honest when `systems.messaging.adapter` is left as `mock`. See
+# core/adapters/__init__.py:_systems_used.
+systems_used: [pms, email]
+
+# --- The confidence gate (rule: confidence-gate) ----------------------------
+# Anything a draft's own agent scored below this is stopped before it reaches
+# a guest. This is the platform's single most-quoted number - see
+# docs/how-it-works.md.
+confidence_threshold: 80
+
+# --- The rate cross-check (rule: rate-crosscheck) ---------------------------
+# gap_pct = round((pms_rate - quoted_price) / pms_rate * 100). At or above
+# the block threshold the draft is blocked outright; between the two
+# thresholds it is held (amber) but not blocked. Below the held threshold,
+# the gap is not flagged at all.
+rate_block_threshold_pct: 15
+rate_held_threshold_pct: 5
+
+# --- Human-only categories (rule: category-blocks) --------------------------
+# A draft whose category is in this list is always escalated - no AI answer
+# ever reaches the guest, whatever the confidence score says. This is the
+# roster's "human-only categories never get an AI answer at all" promise,
+# actually enforced (docs/how-it-works.md design decision 2).
+category_blocks:
+  enabled: true
+  categories:
+    - complaint
+    - refund
+    - legal
+    - payment
+    - safety
+    - press
+    - large_group
+    - medical
+
+# --- The allergen / safety-critical fact check (rule: allergen-check) -------
+# Any claim in draft.claims that mentions one of these words is escalated
+# unless the same fact, verbatim, is confirmed in knowledge/allergens.md.
+# This is deliberately the highest-severity check in the repo - see the
+# restaurant lens in specs/ai-manager-overseer.md section 10.
+allergen_check:
+  enabled: true
+  keywords: [nut, peanut, gluten, dairy, shellfish, celery, sesame, allergy, allergic]
+
+# --- The tone check (rule: tone-check) --------------------------------------
+# A crude, deterministic stand-in for a real tone classifier - see
+# docs/how-it-works.md design decision 5. Any phrase below, or a line more
+# than 30% capital letters, fires a hold (never a block on its own).
+tone_check:
+  enabled: true
+  forbidden_phrases:
+    - "guaranteed"
+    - "100% refund"
+    - "no questions asked"
+    - "definitely will"
+
+# --- Sub-agent: Compliance / GDPR AI ("The Notary") --------------------------
+# The Warden is fully useful on its own - screening does not need the
+# privacy desk - so this stays off until you turn it on. See
+# docs/sub-agents.md and workflows/20-compliance-gdpr.md.
+subagents:
+  compliance_gdpr:
+    enabled: false
+
+gdpr:
+  sla_days_default: 30
+  # Phrases that mark an inbound email as GDPR-shaped, and which kind. First
+  # match wins. See knowledge/gdpr-intake-phrases.md for the full list and
+  # tools/gdpr.py:classify_intake().
+  intake_phrases_file: knowledge/gdpr-intake-phrases.md
+  # Any of these in the message body routes the request to awaiting_counsel
+  # instead of being auto-processed - see docs/how-it-works.md design
+  # decision 15.
+  sensitivity_keywords: [lawsuit, journalist, media, press, regulator, sue, threat]
+  # Legal-hold register, data not code - docs/how-it-works.md design decision 14.
+  retention_holds:
+    - applies_to: invoices
+      days: 3650
+      basis: "10-year statutory tax retention"
+  checklists:
+    access: ["Verify requester identity", "Locate records across all systems",
+              "Compile export bundle", "Redact third-party data",
+              "Deliver via secure link", "Human sign-off before delivery"]
+    erasure: ["Verify requester identity", "Locate records across all systems",
+               "Check legal holds and retention", "Erase marketing profile and suppress",
+               "Confirm in writing to the requester", "Human sign-off before delivery"]
+    rectification: ["Verify requester identity", "Locate records across all systems",
+                      "Correct the record and reissue", "Confirm in writing to the requester",
+                      "Human sign-off before delivery"]
+  # Named the same way in every narration - specs/compliance-gdpr-ai.md section 3.
+  systems_searched: "the PMS, the email and WhatsApp archive, the folio and invoice store, the marketing list, and the Wi-Fi captive-portal logs"
+
+# --- Fleet (pause/resume) - honestly simulated, see docs/how-it-works.md ----
+# design decision 7 and docs/sub-agents.md. Not a real kill switch: this repo
+# cannot reach another repo's process.
+fleet:
+  known_agents: ["Front Desk AI", "Upsell AI", "Review-Response AI", "Concierge AI"]
+
+# --- Schedule ----------------------------------------------------------------
+# What `tools/run.py --watch` polls on, and what `make schedule` prints by
+# default. Each entry names a real command in this repo and the cadence
+# workflows/*.md actually document. `make schedule ARGS="--all"` prints one
+# ready-to-paste snippet per entry, with the command and cadence filled in -
+# that is what scheduler/crontab.example and README section 9 show.
+schedule:
+  screening:
+    command: "tools/run.py --once"
+    cadence: "*/2 * * * *"       # every 2 minutes - "the instant something looks off"
+  daily_digest:
+    command: "tools/digest.py"
+    cadence: "0 8 * * *"          # 08:00 - the daily review loop
+  compliance_gdpr:
+    command: "tools/gdpr.py sweep"
+    cadence: "*/30 * * * *"       # every 30 minutes, only meaningful once enabled

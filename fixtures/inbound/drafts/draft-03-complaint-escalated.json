@@ -1,0 +1,15 @@
+{
+  "id": "draft-03",
+  "agent": "Upsell AI",
+  "channel": "whatsapp",
+  "guest": "P. Nair",
+  "category": "complaint",
+  "confidence": 88,
+  "quoted_price": null,
+  "room_type_id": null,
+  "check_in": null,
+  "check_out": null,
+  "claims": [],
+  "draft_text": "I'm sorry to hear the room wasn't ready on arrival - I've noted a one-night credit on your folio and let the duty manager know.",
+  "received_at": "2026-08-27T08:10:00+00:00"
+}

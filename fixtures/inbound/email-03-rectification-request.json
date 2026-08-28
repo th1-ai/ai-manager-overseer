@@ -1,0 +1,11 @@
+{
+  "id": "email-03",
+  "thread_id": "thread-03",
+  "from": "halvor.berge@example.com",
+  "from_name": "Halvor Berge",
+  "to": ["reservations@example.com"],
+  "subject": "Wrong information on my invoice",
+  "body": "Hello,\n\nMy name is misspelled on the invoice from my last stay (INV-2291) - could you correct my details and reissue it?\n\nThanks,\nHalvor",
+  "received_at": "2026-08-22T14:00:00+00:00",
+  "folder": "INBOX"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "email-02",
+  "thread_id": "thread-02",
+  "from": "priya.nair@example.com",
+  "from_name": "Priya Nair",
+  "to": ["reservations@example.com"],
+  "subject": "Copy of my data",
+  "body": "Hi there,\n\nCould you send me a copy of all data you hold on me? I have stayed a few times and would like to see what is on file.\n\nThanks,\nPriya",
+  "received_at": "2026-08-24T10:30:00+00:00",
+  "folder": "INBOX"
+}

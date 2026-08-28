@@ -1,0 +1,11 @@
+{
+  "id": "email-05",
+  "thread_id": "thread-05",
+  "from": "tove.solberg@example.com",
+  "from_name": "Tove Solberg",
+  "to": ["reservations@example.com"],
+  "subject": "Deluxe Sea View for August",
+  "body": "Hello,\n\nCould you tell me the rate for a Deluxe Sea View on the 14th and 15th of August? We are two adults.\n\nThanks,\nTove",
+  "received_at": "2026-08-27T07:30:00+00:00",
+  "folder": "INBOX"
+}

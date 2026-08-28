@@ -1,0 +1,11 @@
+{
+  "id": "email-01",
+  "thread_id": "thread-01",
+  "from": "m.halvorsen@example.com",
+  "from_name": "M. Halvorsen",
+  "to": ["reservations@example.com"],
+  "subject": "Please delete my data",
+  "body": "Hello,\n\nI stayed with you last year and I would like you to delete my personal data - I am exercising my right to be forgotten. Please confirm once this is done.\n\nRegards,\nM. Halvorsen",
+  "received_at": "2026-08-05T09:00:00+00:00",
+  "folder": "INBOX"
+}
